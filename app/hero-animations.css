@@ -1,0 +1,332 @@
+/* Hero cinematic animations — toggled by .hero-section.hero-animate (Intersection Observer + classList) */
+
+.hero-section .hero-blob-wrap {
+  opacity: 0;
+  will-change: opacity;
+}
+
+.hero-section.hero-animate .hero-blob-wrap {
+  animation: hero-blob-fade 1.5s ease forwards;
+}
+
+@keyframes hero-blob-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-section .hero-blob-spin {
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.hero-section.hero-animate .hero-blob-spin {
+  animation: hero-blob-rotate 20s linear 1.5s infinite;
+}
+
+@keyframes hero-blob-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Phone — translate ≤8px, scale ≥0.96 */
+.hero-section .hero-phone-stage {
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-phone-stage {
+  animation: hero-phone-enter 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s
+    forwards;
+}
+
+@keyframes hero-phone-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Left column — heading pieces */
+.hero-section .hero-heading-plain,
+.hero-section .hero-heading-tail {
+  opacity: 0;
+  transform: translateY(8px);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-heading-plain,
+.hero-section.hero-animate .hero-heading-tail {
+  animation: hero-head-rise 0.8s ease-out forwards;
+}
+
+.hero-section .hero-heading-finance {
+  opacity: 0;
+  transform: translateY(8px);
+  color: #3dab6b;
+  will-change: transform, opacity, color, filter;
+}
+
+.hero-section.hero-animate .hero-heading-finance {
+  animation: hero-head-finance 0.8s ease-out 0.15s forwards;
+}
+
+@keyframes hero-head-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-head-finance {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    color: #5fd68f;
+    filter: brightness(1.12);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+    color: #52d67f;
+    filter: brightness(1.18);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    color: #3dab6b;
+    filter: brightness(1);
+  }
+}
+
+.hero-section .hero-subtext {
+  opacity: 0;
+  transform: translateY(8px);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-subtext {
+  animation: hero-sub-rise 0.7s ease-out 0.3s forwards;
+}
+
+@keyframes hero-sub-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section .hero-cta-wrap {
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-cta-wrap {
+  animation: hero-cta-rise 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes hero-cta-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Primary CTA — hover / active / shimmer */
+.hero-cta-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.hero-cta-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-2px);
+  background-color: #47bc76 !important;
+  box-shadow:
+    0 18px 44px -14px rgba(61, 171, 107, 0.55),
+    0 10px 24px -12px rgba(26, 26, 46, 0.18);
+}
+
+.hero-cta-btn:hover::before {
+  opacity: 1;
+  animation: hero-cta-shimmer 0.85s ease forwards;
+}
+
+.hero-cta-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 10px 28px -14px rgba(61, 171, 107, 0.4),
+    0 4px 12px -8px rgba(26, 26, 46, 0.12);
+  transition-duration: 0.1s;
+}
+
+@keyframes hero-cta-shimmer {
+  to {
+    transform: translateX(130%);
+  }
+}
+
+/* Navbar sign up */
+.nav-signup-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.nav-signup-btn:hover {
+  transform: translateY(-2px);
+  background-color: #47bc76 !important;
+  box-shadow:
+    0 0 20px rgba(61, 171, 107, 0.4),
+    0 12px 28px -10px rgba(61, 171, 107, 0.35);
+}
+
+.nav-signup-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 0 12px rgba(61, 171, 107, 0.25),
+    0 6px 16px -8px rgba(26, 26, 46, 0.15);
+  transition-duration: 0.1s;
+}
+
+/* Navbar center links — underline grow */
+.nav-link-elegant {
+  position: relative;
+  display: inline-block;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-link-elegant:hover {
+  transform: translateY(-1px);
+  color: #374151 !important;
+}
+
+.nav-link-elegant::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 0.2s ease;
+}
+
+.nav-link-elegant:hover::after {
+  width: 100%;
+}
+
+/* Floating cards — entrance (≤8px movement, scale ≥0.96) */
+.hero-section .hero-card-enter--education {
+  opacity: 0;
+  transform: translateX(-8px) translateY(8px) rotate(-2deg) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-card-enter--education {
+  animation: hero-card-enter-education 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    0.3s forwards;
+}
+
+@keyframes hero-card-enter-education {
+  from {
+    opacity: 0;
+    transform: translateX(-8px) translateY(8px) rotate(-2deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.hero-section .hero-card-enter--dollar {
+  opacity: 0;
+  transform: translateX(8px) translateY(-8px) rotate(2deg) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-card-enter--dollar {
+  animation: hero-card-enter-dollar 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s
+    forwards;
+}
+
+@keyframes hero-card-enter-dollar {
+  from {
+    opacity: 0;
+    transform: translateX(8px) translateY(-8px) rotate(2deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.hero-section .hero-card-enter--transactions {
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.hero-section.hero-animate .hero-card-enter--transactions {
+  animation: hero-card-enter-transactions 0.9s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
+}
+
+@keyframes hero-card-enter-transactions {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
