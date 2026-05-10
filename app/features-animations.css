@@ -1,0 +1,68 @@
+/*
+  FeaturesSection floating UI — mirrors `.hero-section .hero-card-enter--*` in hero-animations.css
+  (same transforms, 0.9s duration, cubic-bezier, delays 0.3s / 0.5s / 0.7s). Keyframes are reused.
+
+  `useFeatAnimate` toggles `.animate-in` on `.features-pay-mockup` / `.features-hist-mockup`,
+  matching AnimatedHeroSection’s `.hero-animate` toggle so entrances replay each viewport entry.
+*/
+
+.features-pay-mockup .hero-card-enter--education,
+.features-pay-mockup .hero-card-enter--dollar,
+.features-pay-mockup .hero-card-enter--transactions {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.features-hist-mockup .hero-card-enter--education {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.features-hist-mockup .hero-card-enter--dollar,
+.features-hist-mockup .hero-card-enter--transactions {
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.features-pay-mockup .hero-card-enter--education,
+.features-hist-mockup .hero-card-enter--education {
+  transform: translateX(-8px) translateY(8px) rotate(-2deg) scale(0.96);
+}
+
+.features-pay-mockup .hero-card-enter--dollar {
+  transform: translateX(8px) translateY(-8px) rotate(2deg) scale(0.96);
+}
+
+.features-pay-mockup .hero-card-enter--transactions {
+  transform: translateY(8px) scale(0.96);
+}
+
+.features-hist-mockup .hero-card-enter--dollar,
+.features-hist-mockup .hero-card-enter--transactions {
+  transform: translateX(8px) translateY(-8px) rotate(2deg) scale(0.96);
+}
+
+.features-hist-mockup .hero-card-enter--transactions {
+  transform: translateY(8px) scale(0.96);
+}
+
+.features-pay-mockup.animate-in .hero-card-enter--education,
+.features-hist-mockup.animate-in .hero-card-enter--education {
+  animation: hero-card-enter-education 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+}
+
+.features-pay-mockup.animate-in .hero-card-enter--dollar,
+.features-hist-mockup.animate-in .hero-card-enter--dollar {
+  animation: hero-card-enter-dollar 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+}
+
+.features-pay-mockup.animate-in .hero-card-enter--transactions,
+.features-hist-mockup.animate-in .hero-card-enter--transactions {
+  animation: hero-card-enter-transactions 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
+}
+
+.features-hist-mockup.animate-in .hero-card-enter--dollar,
+.features-hist-mockup.animate-in .hero-card-enter--transactions {
+  visibility: visible;
+}

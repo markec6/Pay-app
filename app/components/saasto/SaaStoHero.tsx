@@ -1,5 +1,7 @@
 import { AnimatedHeroSection } from "./AnimatedHeroSection";
+import { FeaturesSection } from "./FeaturesSection";
 import { SaaStoNavbar } from "./SaaStoNavbar";
+import { StatsSection } from "./StatsSection";
 
 export function SaaStoHero() {
   return (
@@ -7,6 +9,8 @@ export function SaaStoHero() {
       <SaaStoNavbar />
 
       <AnimatedHeroSection />
+      <StatsSection />
+      <FeaturesSection />
     </div>
   );
 }
