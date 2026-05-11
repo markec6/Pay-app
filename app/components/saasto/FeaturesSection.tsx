@@ -4,7 +4,7 @@ import { useEffect, useRef, type RefObject } from "react";
 
 // Identičan stil za sve male bele divove (i gore i dole)
 const SMALL_WHITE_CARD = 
-  "rounded-xl border border-white/80 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] px-4 py-3 flex items-center gap-3";
+  "rounded-xl border border-white/80 bg-white px-4 py-3 flex items-center gap-3";
 
 /** Matches AnimatedHeroSection (IntersectionObserver on `.hero-section` → `.hero-animate`). */
 const FEAT_IO_OPTS: IntersectionObserverInit = {
@@ -35,7 +35,7 @@ export function FeaturesSection() {
   return (
     <section className="w-full overflow-x-clip bg-white py-20">
       
-      {/* GORNJI DEO (Payments) - NE DIRAMO PO TVOJOJ KOMANDI */}
+      {/* GORNJI DEO (Payments) */}
       <div ref={payRef} className="features-pay-mockup mx-auto max-w-6xl px-6 pb-44">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
           <div className="relative order-2 lg:order-1">
@@ -55,7 +55,7 @@ export function FeaturesSection() {
               </div>
               <div className="absolute -right-8 top-[15%] w-[130px]">
                 <div className="hero-card-enter--dollar">
-                <div className={SMALL_WHITE_CARD}>
+                <div className={`${SMALL_WHITE_CARD} shadow-lg`}>
                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3DAB6B] text-white"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17 17 7M17 7v4M17 7h-4"/></svg></div>
                    <p className="text-[11px] font-bold text-[#1a1a2e]">+111,239$</p>
                 </div>
@@ -63,7 +63,7 @@ export function FeaturesSection() {
               </div>
               <div className="absolute -right-10 bottom-[20%] w-[130px]">
                 <div className="hero-card-enter--transactions">
-                <div className={SMALL_WHITE_CARD}>
+                <div className={`${SMALL_WHITE_CARD} shadow-lg`}>
                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e85d6f] text-white"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3"><path d="M17 7 7 17M7 17v-4M7 17h4"/></svg></div>
                    <p className="text-[11px] font-bold text-[#1a1a2e]">-82,475$</p>
                 </div>
@@ -71,58 +71,67 @@ export function FeaturesSection() {
               </div>
             </div>
           </div>
-          <div className="order-1 lg:order-2">
+          <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
             <h2 className="text-3xl font-extrabold leading-tight text-[#1a1a2e] lg:text-4xl">
               Quick And Easy Payments With Just A Few Clicks
             </h2>
-            <p className="mt-5 text-base text-gray-500">An enim nullam tempor sapien gravida donec enim ipsum porta justo congue magna at pretium purus pretium ligula</p>
-            <button className="mt-8 rounded-full bg-[#3DAB6B] px-8 py-3 text-sm font-bold text-white shadow-lg shadow-green-100 hover:scale-105 transition-transform">Start 14 Days Trial</button>
+            <p className="mt-5 text-base text-gray-500 text-balance">
+              An enim nullam tempor sapien gravida donec enim ipsum porta justo congue magna at pretium purus pretium ligula
+            </p>
+            <button
+              type="button"
+              className="mt-8 mx-auto rounded-full bg-[#3DAB6B] px-8 py-3 text-sm font-bold text-white shadow-lg shadow-green-100 transition-transform hover:scale-105 lg:mx-0 lg:self-start"
+            >
+              Start 14 Days Trial
+            </button>
           </div>
         </div>
       </div>
 
-      {/* DONJI DEO (History) - FIX ZA POZICIJE I DIV-OVE */}
+      {/* DONJI DEO (History) */}
       <div ref={histRef} className="features-hist-mockup mx-auto max-w-6xl px-6">
-        <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
-          <div className="order-2 lg:order-1">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-30">
+          <div className="flex w-full flex-col items-center text-center lg:order-1 lg:w-1/2 lg:items-start lg:text-left">
             <h2 className="text-3xl font-extrabold leading-tight text-[#1a1a2e] lg:text-4xl">
               You Can View Transaction History Easily
             </h2>
-            <p className="mt-5 text-base text-gray-500">An enim nullam tempor sapien gravida donec enim ipsum porta justo congue magna at pretium purus pretium ligula</p>
-            <a href="#" className="mt-6 inline-block font-bold text-[#3DAB6B] hover:underline">Get started &gt;&gt;</a>
+            <p className="mt-5 text-base text-gray-500">
+              An enim nullam tempor sapien gravida donec enim ipsum porta justo congue magna at pretium purus pretium ligula
+            </p>
+            <a
+              href="#"
+              className="mt-6 inline-block font-bold text-[#3DAB6B] hover:underline"
+            >
+              Get started &gt;&gt;
+            </a>
           </div>
-          
-          <div className="relative order-1 lg:order-2">
+
+          <div className="relative w-full lg:order-2 lg:w-1/2">
             <div className="relative mx-auto max-w-[320px]">
-              {/* Glavna slika telefona */}
               <img src="/assets/Payments2.png" alt="" className="h-auto w-full object-contain rounded-[2rem]" />
 
-              {/* PLAVI DIV — flush top-left of mockup image */}
+              {/* PLAVI DIV */}
               <div className="absolute left-[-10%] top-[-20%] z-30">
                 <div className="hero-card-enter--education flex flex-col">
-                  {/* Connected Card Label */}
                   <div className="w-full rounded-t-lg bg-[#3DAB6B] px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-white">
                     Connected Card
                   </div>
-                  {/* Card Body */}
-                  <div className=" rounded-b-xl bg-[#2D58A7] px-4 pb-[12px] shadow-2xl shadow-blue-900/20 flex flex-row justify-between items-center gap-[16px]">
-                    <div className="flex items-center justify-between items-center">
+                  <div className="rounded-b-xl bg-[#2D58A7] px-4 pb-[12px] shadow-2xl shadow-blue-900/40 flex flex-row justify-between items-center gap-[16px]">
+                    <div className="flex items-center">
                       <svg viewBox="0 0 24 24" className="h-6 w-8 text-white/90" fill="currentColor"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm2 2h8v4H8v-4z"/></svg>
                     </div>
                     <div className="mt-4">
                       <p className="text-[11px] font-bold text-white">Halca Alane</p>
                       <p className="mt-1 font-mono text-[10px] tracking-widest text-white/80">1234 **** 5090 6620</p>
                     </div>
-                    <div>
                     <svg viewBox="0 0 24 24" className="h-4 w-4 text-white/70" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* DRIBBBLE PRO — Hero stagger sequence #3 (transactions @ 0.7s); DOM/visual unchanged */}
-              <div className="hero-card-enter--transactions absolute -left-10 top-[28%] z-20 shadow-2xl shadow-black/80 rounded-xl">
-                <div className={SMALL_WHITE_CARD}>
+              {/* DRIBBBLE PRO */}
+              <div className="hero-card-enter--transactions absolute -left-10 top-[28%] z-20">
+                <div className={`${SMALL_WHITE_CARD} shadow-2xl shadow-black/20`}>
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ea4c89] text-[8px] font-bold text-white">Dr</div>
                   <div className="flex w-full items-center justify-between gap-[24px]">
                     <span className="text-[9px] font-bold text-[#1a1a2e]">Dribbble Pro</span>
@@ -131,17 +140,16 @@ export function FeaturesSection() {
                 </div>
               </div>
 
-              {/* NETFLIX — Hero stagger sequence #2 (dollar @ 0.5s) */}
-              <div className="hero-card-enter--dollar absolute -left-10 top-[52%] z-20  shadow-2xl shadow-black/80 rounded-xl">
-                <div className={SMALL_WHITE_CARD}>
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white text-red-600">N</div>
+              {/* NETFLIX */}
+              <div className="hero-card-enter--dollar absolute -left-10 top-[52%] z-20">
+                <div className={`${SMALL_WHITE_CARD} shadow-2xl shadow-black/20`}>
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black text-[9px] font-bold text-red-600">N</div>
                   <div className="flex w-full items-center justify-between gap-[24px]">
                     <span className="text-[9px] font-bold text-[#1a1a2e]">Netflix</span>
                     <span className="text-[9px] font-extrabold text-[#1a1a2e]">-$2,114</span>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
