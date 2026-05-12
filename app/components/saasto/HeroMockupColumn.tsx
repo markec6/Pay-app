@@ -14,7 +14,7 @@ const chartHeightsLg = [14, 22, 11, 26, 17, 30, 15];
 
 export function HeroMockupColumn() {
   return (
-    <div className="relative flex w-full min-w-0 max-w-full justify-center md:justify-end">
+    <div className="relative flex w-full min-w-0 max-w-full justify-between md:justify-end">
       <div
         className="hero-blob-wrap pointer-events-none absolute left-1/2 top-[46%] z-0 flex aspect-square w-[min(88vw,280px)] max-w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center sm:w-[min(85vw,320px)] md:left-[52%] md:top-[48%] md:w-[min(360px,calc(100%-1rem))] lg:w-[min(400px,100%)] xl:w-[420px]"
         aria-hidden

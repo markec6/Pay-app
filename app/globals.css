@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./hero-animations.css";
 @import "./features-animations.css";
+@import "./happy-users-animations.css";
 
 :root {
   --background: #ffffff;

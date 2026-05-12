@@ -1,6 +1,8 @@
 import { AnimatedHeroSection } from "./AnimatedHeroSection";
 import { FeaturesSection } from "./FeaturesSection";
 import { FeaturesShowcaseSection } from "./FeaturesShowcaseSection";
+import { HappyUsersSection } from "./HappyUsersSection";
+import { PlatformSection } from "./PlatformSection";
 import { SaaStoNavbar } from "./SaaStoNavbar";
 import { StatsSection } from "./StatsSection";
 
@@ -13,6 +15,8 @@ export function SaaStoHero() {
       <StatsSection />
       <FeaturesSection />
       <FeaturesShowcaseSection />
+      <PlatformSection />
+      <HappyUsersSection />
     </div>
   );
 }

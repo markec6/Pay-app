@@ -1,0 +1,116 @@
+/* Happy Users — forced avatar motion + no ghost rings (HappyUsersSection only) */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(3px);
+  }
+}
+
+@keyframes subtleGlow {
+  0%,
+  100% {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.18),
+      0 0 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Kill white rings / wrappers — all avatar wrappers */
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-root,
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live,
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-clip {
+  background-color: transparent !important;
+  border: none !important;
+  border-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/* No static shadow on positioning / clip layers (avoids milky rings); glow stays on .happy-users-avatar-live via keyframes only */
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-root,
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-clip {
+  box-shadow: none !important;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-root {
+  pointer-events: none;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-sizing: border-box;
+  will-change: transform, box-shadow;
+  border-radius: 9999px;
+  background-color: transparent !important;
+  border: none !important;
+  border-width: 0 !important;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-clip {
+  overflow: hidden !important;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  isolation: isolate;
+  transform: translateZ(0);
+  background-color: transparent !important;
+  border: none !important;
+  border-width: 0 !important;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border: none !important;
+  border-width: 0 !important;
+  outline: none !important;
+  outline-offset: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Float + glow on the SAME circular node (transform + box-shadow together) */
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live--1 {
+  animation:
+    float 4s ease-in-out infinite,
+    subtleGlow 4s ease-in-out infinite;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live--2 {
+  animation:
+    float 5s ease-in-out infinite,
+    subtleGlow 5s ease-in-out infinite;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live--3 {
+  animation:
+    float 6s ease-in-out infinite,
+    subtleGlow 6s ease-in-out infinite;
+}
+
+section[aria-labelledby="happy-users-heading"] .happy-users-avatar-live--4 {
+  animation:
+    float 7s ease-in-out infinite,
+    subtleGlow 7s ease-in-out infinite;
+}

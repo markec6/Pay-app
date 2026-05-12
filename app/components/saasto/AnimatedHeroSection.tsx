@@ -43,7 +43,7 @@ export function AnimatedHeroSection() {
             </span>
             <span className="hero-heading-tail inline-block"> Easily</span>
           </h1>
-          <p className="hero-subtext mt-5 max-w-lg text-sm leading-relaxed text-neutral-600 sm:text-[15px] md:mt-5 md:text-base lg:text-[17px] lg:leading-relaxed">
+          <p className="hero-subtext mt-5 max-w-lg text-[16px] leading-relaxed text-neutral-600 sm:text-[16px] md:mt-5 md:text-base lg:text-[17px] lg:leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris.

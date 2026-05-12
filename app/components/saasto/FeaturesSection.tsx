@@ -41,41 +41,41 @@ export function FeaturesSection() {
           <div className="relative order-2 lg:order-1">
             <div className="relative mx-auto max-w-[320px]">
               <img src="/assets/Payments1.png" alt="" className="h-auto w-full object-contain" />
-              <div className="absolute -left-12 -top-8 w-[190px]">
+              <div className="absolute -left-12 -top-8 ">
                 <div className="hero-card-enter--education">
-                <div className="rounded-2xl border border-white/80 bg-white/90 p-4 shadow-xl backdrop-blur-sm">
-                  <div className="flex gap-3">
+                <div className="rounded-2xl border border-white/80 bg-white p-4 shadow-xl backdrop-blur-sm">
+                  <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#3DAB6B] text-white">
                       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                     </div>
-                    <p className="text-[10px] font-bold text-[#1a1a2e]">Transfer successfully done</p>
+                    <p className="text-[12px] font-bold text-[#1a1a2e]">Transfer successfully done</p>
                   </div>
                 </div>
                 </div>
               </div>
-              <div className="absolute -right-8 top-[15%] w-[130px]">
+              <div className="absolute -right-8 top-[15%]">
                 <div className="hero-card-enter--dollar">
                 <div className={`${SMALL_WHITE_CARD} shadow-lg`}>
                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3DAB6B] text-white"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17 17 7M17 7v4M17 7h-4"/></svg></div>
-                   <p className="text-[11px] font-bold text-[#1a1a2e]">+111,239$</p>
+                   <p className="text-[14px] font-bold text-[#1a1a2e]">+111,239$</p>
                 </div>
                 </div>
               </div>
-              <div className="absolute -right-10 bottom-[20%] w-[130px]">
+              <div className="absolute -right-10 bottom-[20%]">
                 <div className="hero-card-enter--transactions">
                 <div className={`${SMALL_WHITE_CARD} shadow-lg`}>
                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e85d6f] text-white"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3"><path d="M17 7 7 17M7 17v-4M7 17h4"/></svg></div>
-                   <p className="text-[11px] font-bold text-[#1a1a2e]">-82,475$</p>
+                   <p className="text-[14px] font-bold text-[#1a1a2e]">-82,475$</p>
                 </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
+          <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left w-full">
             <h2 className="text-3xl font-extrabold leading-tight text-[#1a1a2e] lg:text-4xl">
               Quick And Easy Payments With Just A Few Clicks
             </h2>
-            <p className="mt-5 text-base text-gray-500 text-balance">
+            <p className="mt-5 text-base text-gray-500 text-balance w-full">
               An enim nullam tempor sapien gravida donec enim ipsum porta justo congue magna at pretium purus pretium ligula
             </p>
             <button
@@ -134,8 +134,8 @@ export function FeaturesSection() {
                 <div className={`${SMALL_WHITE_CARD} shadow-2xl shadow-black/20`}>
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#ea4c89] text-[8px] font-bold text-white">Dr</div>
                   <div className="flex w-full items-center justify-between gap-[24px]">
-                    <span className="text-[9px] font-bold text-[#1a1a2e]">Dribbble Pro</span>
-                    <span className="text-[9px] font-extrabold text-[#1a1a2e]">-$2,114</span>
+                    <span className="text-[12px] font-bold text-[#1a1a2e]">Dribbble Pro</span>
+                    <span className="text-[10px] font-extrabold text-[#1a1a2e]">-$2,114</span>
                   </div>
                 </div>
               </div>
@@ -145,8 +145,8 @@ export function FeaturesSection() {
                 <div className={`${SMALL_WHITE_CARD} shadow-2xl shadow-black/20`}>
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-black text-[9px] font-bold text-red-600">N</div>
                   <div className="flex w-full items-center justify-between gap-[24px]">
-                    <span className="text-[9px] font-bold text-[#1a1a2e]">Netflix</span>
-                    <span className="text-[9px] font-extrabold text-[#1a1a2e]">-$2,114</span>
+                    <span className="text-[12px] font-bold text-[#1a1a2e]">Netflix</span>
+                    <span className="text-[10px] font-extrabold text-[#1a1a2e]">-$2,114</span>
                   </div>
                 </div>
               </div>
