@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useState, type MouseEvent } from "react";
 
 const navLinks = [
-  { label: "Demos", href: "#demos" },
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Dashboard", href: "/dashboard" },
+  { label: "Transactions", href: "/dashboard/transactions" },
+  { label: "Bill Planner", href: "/dashboard/bill-planner" },
+  { label: "Settings", href: "/dashboard/settings" },
 ];
 
 function LeafLogo({ className }: { className?: string }) {
@@ -25,11 +26,26 @@ function LeafLogo({ className }: { className?: string }) {
 
 export function SaaStoNavbar() {
   const [open, setOpen] = useState(false);
+  const [loginNoticeOpen, setLoginNoticeOpen] = useState(false);
+
+  function handleNavClick(event: MouseEvent<HTMLAnchorElement>) {
+    // Future auth interceptor:
+    // Replace this hardcoded public preview flag with global auth state.
+    // If `isLoggedIn` becomes false, prevent route navigation, close the
+    // mobile menu, and show the centered login-required modal below.
+    const isLoggedIn = true;
+
+    if (!isLoggedIn) {
+      event.preventDefault();
+      setOpen(false);
+      setLoginNoticeOpen(true);
+    }
+  }
 
   return (
     <header className="relative z-50 w-full border-b border-transparent bg-white">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-4 md:px-8 lg:px-10">
-        <a
+        <Link
           href="/"
           className="flex shrink-0 items-center gap-2 text-[#1a1a2e]"
           aria-label="SaaSto home"
@@ -38,20 +54,21 @@ export function SaaStoNavbar() {
           <span className="text-xl font-bold tracking-tight md:text-2xl">
             SaaSto
           </span>
-        </a>
+        </Link>
 
         <nav
           className="absolute left-1/2 hidden -translate-x-1/2 lg:flex lg:items-center lg:gap-10"
           aria-label="Main"
         >
           {navLinks.map(({ label, href }) => (
-            <a
+            <Link
               key={label}
               href={href}
               className="nav-link-elegant text-[15px] font-medium text-neutral-600"
+              onClick={handleNavClick}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -113,14 +130,17 @@ export function SaaStoNavbar() {
           aria-label="Mobile"
         >
           {navLinks.map(({ label, href }) => (
-            <a
+            <Link
               key={label}
               href={href}
               className="min-h-[44px] rounded-lg px-2 py-3 text-[15px] font-medium text-neutral-600 hover:bg-neutral-50 hover:text-[#1a1a2e]"
-              onClick={() => setOpen(false)}
+              onClick={(event) => {
+                handleNavClick(event);
+                setOpen(false);
+              }}
             >
               {label}
-            </a>
+            </Link>
           ))}
           <a
             href="#login"
@@ -131,6 +151,38 @@ export function SaaStoNavbar() {
           </a>
         </nav>
       </div>
+
+      {loginNoticeOpen ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 px-5 backdrop-blur-md"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="login-required-title"
+        >
+          <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
+            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#3DAB6B]/10 text-[#3DAB6B]">
+              <LeafLogo className="h-8 w-8" />
+            </div>
+            <h2
+              id="login-required-title"
+              className="text-2xl font-bold tracking-tight text-[#1a1a2e]"
+            >
+              Login required
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-neutral-600">
+              Please log in to access your secure finance dashboard and account
+              tools.
+            </p>
+            <button
+              type="button"
+              className="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#3DAB6B] px-6 text-sm font-semibold text-white shadow-[0_14px_40px_-12px_rgba(61,171,107,0.55)]"
+              onClick={() => setLoginNoticeOpen(false)}
+            >
+              Continue preview
+            </button>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }
