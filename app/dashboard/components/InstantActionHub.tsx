@@ -307,7 +307,7 @@ export function InstantActionHub({
                 </span>
                 <select
                   value={selectedBank}
-                  onChange={(event) => setSelectedBank(event.target.value)}
+                  onChange={(event) => setSelectedBank(event.target.value as any)}
                   className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm font-bold text-[#1a1a2e] outline-none transition focus:border-[#3DAB6B]"
                 >
                   {bankDestinations.map((bank) => (
