@@ -35,6 +35,8 @@ const bankDestinations = [
   "Continental Reserve",
 ] as const;
 
+type BankDestination = (typeof bankDestinations)[number];
+
 function formatLinkedCardNumber(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 16);
   const visibleDigits = digits.slice(-4);
@@ -64,7 +66,8 @@ export function InstantActionHub({
   const [paymentAmount, setPaymentAmount] = useState("");
   const [cardholderName, setCardholderName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [selectedBank, setSelectedBank] = useState(bankDestinations[0]);
+  const [selectedBank, setSelectedBank] =
+    useState<BankDestination>(bankDestinations[0]);
   const [withdrawAmount, setWithdrawAmount] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -307,7 +310,9 @@ export function InstantActionHub({
                 </span>
                 <select
                   value={selectedBank}
-                  onChange={(event) => setSelectedBank(event.target.value as any)}
+                  onChange={(event) =>
+                    setSelectedBank(event.target.value as BankDestination)
+                  }
                   className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm font-bold text-[#1a1a2e] outline-none transition focus:border-[#3DAB6B]"
                 >
                   {bankDestinations.map((bank) => (

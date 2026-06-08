@@ -14,7 +14,9 @@ export async function fetchCurrencyRates(): Promise<CurrencyRates> {
     throw new Error("Exchange rate API key is not configured.");
   }
 
-  const response = await fetch(`${EXCHANGE_RATE_URL}/${apiKey}/latest/USD`);
+  const response = await fetch(`${EXCHANGE_RATE_URL}/${apiKey}/latest/USD`, {
+    cache: "no-store",
+  });
 
   if (!response.ok) {
     throw new Error("Unable to load exchange rates.");
