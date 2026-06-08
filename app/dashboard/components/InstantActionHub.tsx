@@ -6,6 +6,7 @@ import type { DashboardCurrency, DashboardModalView } from "../lib/dashboardType
 import { getCurrencyPrefix } from "../lib/exchangeRates";
 import { AddCardIcon, BillIcon, MotionCard, WalletIcon } from "./DashboardPrimitives";
 import { DashboardModal } from "./DashboardModal";
+import { PremiumDropdown } from "./PremiumDropdown";
 
 const actions = [
   {
@@ -304,24 +305,20 @@ export function InstantActionHub({
                 </div>
               </div>
 
-              <label className="block">
-                <span className="text-sm font-bold text-[#1a1a2e]">
+              <div>
+                <p className="text-sm font-bold text-[#1a1a2e]">
                   Select Bank Destination
-                </span>
-                <select
+                </p>
+                <PremiumDropdown
                   value={selectedBank}
-                  onChange={(event) =>
-                    setSelectedBank(event.target.value as BankDestination)
-                  }
-                  className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm font-bold text-[#1a1a2e] outline-none transition focus:border-[#3DAB6B]"
-                >
-                  {bankDestinations.map((bank) => (
-                    <option key={bank} value={bank}>
-                      {bank}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  options={bankDestinations}
+                  onChange={setSelectedBank}
+                  ariaLabel="Select bank destination"
+                  className="mt-2 w-full"
+                  triggerClassName="w-full rounded-2xl px-4 py-3 font-bold"
+                  menuClassName="left-0 right-auto w-full"
+                />
+              </div>
 
               <label className="mt-4 block">
                 <span className="text-sm font-bold text-[#1a1a2e]">

@@ -12,6 +12,7 @@ import type {
   PaymentCard,
 } from "../lib/dashboardTypes";
 import { ArrowIcon, MotionCard } from "./DashboardPrimitives";
+import { PremiumDropdown } from "./PremiumDropdown";
 
 const currencies: DashboardCurrency[] = ["USD", "EUR", "RSD"];
 
@@ -84,20 +85,13 @@ export function MainWalletCurrencySwift({
                   Currency Swift
                 </h2>
               </div>
-              <select
+              <PremiumDropdown
                 value={activeCurrency}
-                onChange={(event) =>
-                  setActiveCurrency(event.target.value as DashboardCurrency)
-                }
-                className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-bold text-[#1a1a2e] shadow-sm outline-none transition focus:border-[#3DAB6B]"
-                aria-label="Select wallet currency"
-              >
-                {currencies.map((currency) => (
-                  <option key={currency} value={currency}>
-                    {currency}
-                  </option>
-                ))}
-              </select>
+                options={currencies}
+                onChange={setActiveCurrency}
+                ariaLabel="Select wallet currency"
+                triggerClassName="font-bold"
+              />
             </div>
 
             <motion.p
