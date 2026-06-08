@@ -8,13 +8,8 @@ type ExchangeRatePayload = {
 };
 
 export async function fetchCurrencyRates(): Promise<CurrencyRates> {
-  const apiKey = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
-
-  if (!apiKey) {
-    throw new Error("Exchange rate API key is not configured.");
-  }
-
-  const response = await fetch(`${EXCHANGE_RATE_URL}/${apiKey}/latest/USD`, {
+  // Hardkodovan kljuc direktno u URL da Vercel server-side ne bi prskao zbog env varijabli
+  const response = await fetch(`https://v6.exchangerate-api.com/v6/5243011868ab7850f89d30fa/latest/USD`, {
     cache: "no-store",
   });
 
